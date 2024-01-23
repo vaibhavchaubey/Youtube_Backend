@@ -13,10 +13,6 @@
   ],
   "author": "Vaibhav Chaubey",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.2",
-    "mongoose": "^8.1.0"
-  },
   "devDependencies": {
     "nodemon": "^3.0.3",
     "prettier": "^3.2.4"
