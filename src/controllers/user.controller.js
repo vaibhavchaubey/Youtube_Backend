@@ -64,7 +64,7 @@ const registerUser = asyncHandler(async (req, res) => {
         Array.isArray(req.files.coverImage) &&
         req.files.coverImage.length > 0
     ) {
-        coverImageLocalPath = req.files.coverImage[0].path;
+        coverImageLocalPath = req.files.cpooverImage[0].path;
     }
 
     if (!avatarLocalPath) {
@@ -148,7 +148,7 @@ const loginUser = asyncHandler(async (req, res) => {
     };
 
     return res
-        .send(200)
+        .status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
         .json(
