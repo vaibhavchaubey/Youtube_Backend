@@ -358,14 +358,14 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
     }
 
     const channel = await User.aggregate([
-        // Stage 1: Filter User documents by username
+        // Filter User documents by username
         {
             $match: {
                 username: username?.toLowerCase(),
             },
         },
         // Now we have to find count of subscribers of that username
-        // For that we have to seach in subscription model for count of documents which have channel id as username id
+        // For that we have to search in subscription model for count of documents which have channel id as username id
         {
             $lookup: {
                 from: "subscriptions",
@@ -375,7 +375,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
             },
         },
         // Now we have to find count of subscribed channel by that username
-        // For that we have to seach in subscription model for count of documents which have subscriber id as username id
+        // For that we have to search in subscription model for count of documents which have subscriber id as username id
         {
             $lookup: {
                 from: "subscriptions",
