@@ -146,9 +146,9 @@ const getLikedVideos = asyncHandler(async (req, res) => {
         },
     ]);
     res.status(200).json(
-        200,
-        likedVideosAggegate,
-        "liked videos fetched successfully"
+        new ApiResponse(200,
+            likedVideosAggegate,
+            "liked videos fetched successfully")
     );
 });
 
