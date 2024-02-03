@@ -344,17 +344,17 @@ const updateVideo = asyncHandler(async (req, res) => {
         }
     );
 
-    if (!updateVideo) {
+    if (!updatedVideo) {
         throw new ApiError(500, "Failed to update video please try again");
     }
 
-    if (updateVideo) {
+    if (updatedVideo) {
         await deleteOnCloudinary(thumbnailToDelete);
     }
 
     return res
         .status(200)
-        .json(new ApiResponse(200, updateVideo, "Video updated successfully"));
+        .json(new ApiResponse(200, updatedVideo, "Video updated successfully"));
 });
 
 // delete video
