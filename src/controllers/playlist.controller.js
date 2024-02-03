@@ -206,7 +206,7 @@ const addVideoToPlaylist = asyncHandler(async (req, res) => {
         }
     );
 
-    if (!updatePlaylist) {
+    if (!updatedPlaylist) {
         throw new ApiError(
             400,
             "failed to add video to playlist please try again"
@@ -218,7 +218,7 @@ const addVideoToPlaylist = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(
                 200,
-                updatePlaylist,
+                updatedPlaylist,
                 "Added video to playlist successfully"
             )
         );
