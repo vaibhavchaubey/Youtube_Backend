@@ -1,6 +1,6 @@
 import { User } from "../models/user.model.js";
-import { ApiError } from "../utlils/ApiError.js";
-import { asyncHandler } from "../utlils/asyncHandler.js";
+import { ApiError } from "../utils/ApiError.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 import jwt from "jsonwebtoken";
 
 /* (req, res, next) => (req, _, next)   as here 'res' is not used so in that place we put '_'   */
