@@ -102,7 +102,7 @@ const updateTweet = asyncHandler(async (req, res) => {
     const { tweetId } = req.params;
 
     if (!content) {
-        throw new ApiError(400, "content is requied");
+        throw new ApiError(400, "content is required");
     }
 
     if (!isValidObjectId(tweetId)) {
@@ -115,7 +115,7 @@ const updateTweet = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Tweet not found");
     }
 
-    if (tweet?.owner.toSring() !== req.user?._id.toString()) {
+    if (tweet?.owner.toString() !== req.user?._id.toString()) {
         throw new ApiError(400, "Only owner can edit their tweet");
     }
 
@@ -151,7 +151,7 @@ const deleteTweet = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Tweet not found");
     }
 
-    if (tweet?.owner.toSring() !== req.user?._id.toString()) {
+    if (tweet?.owner.toString() !== req.user?._id.toString()) {
         throw new ApiError(400, "Only owner can delete their tweet");
     }
 

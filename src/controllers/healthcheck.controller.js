@@ -4,7 +4,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 
 const healthcheck = asyncHandler(async (req, res) => {
     res.status(200).json(
-        ApiResponse(200, { message: "Everything is OK" }, "OK")
+        new ApiResponse(200, { message: "Everything is OK" }, "OK")
     );
 });
 
