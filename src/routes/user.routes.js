@@ -33,14 +33,15 @@ router.route("/register").post(
     registerUser
 );
 
-router.route("/login").post(loginUser);
+/* If you're using multer for file uploads, you might be tempted to include upload.none() middleware when handling routes that don't involve file uploads.  */
+router.route("/login").post(upload.none(), loginUser);
 
 // secured routes - specific paths or endpoints in a web application that require authentication and authorization to access
 router.route("/logout").post(verifyJWT, logoutUser);
 router.route("/refresh-token").post(refreshAccessToken);
 router.route("/change-password").post(verifyJWT, changeCurrentPassword);
 router.route("/current-user").get(verifyJWT, getCurrentUser);
-router.route("/update-account").patch(verifyJWT, updateAccountDetails);
+router.route("/update-account").patch(upload.none(), verifyJWT, updateAccountDetails);
 
 router
     .route("/update-avatar")
