@@ -74,7 +74,7 @@ const getUserTweets = asyncHandler(async (req, res) => {
         {
             $addFields: {
                 likesCount: {
-                    $size: "$likesDetails",
+                    $size: "$likeDetails",
                 },
                 ownerDetails: {
                     $first: "$ownerDetails",

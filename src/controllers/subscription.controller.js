@@ -122,9 +122,10 @@ const getUserChannelSubscribers = asyncHandler(async (req, res) => {
                                     else: false,
                                 },
                                 // Here we are finding the count of subscribers of channel's current subscriber
-                                subscribersCount: {
-                                    $size: "$subscribedToSubscriber",
-                                },
+                                
+                            },
+                            subscribersCount: {
+                                $size: "$subscribedToSubscriber",
                             },
                         },
                     },

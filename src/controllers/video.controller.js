@@ -19,17 +19,17 @@ const getAllVideos = asyncHandler(async (req, res) => {
     // here the name of search index is 'search-videos'
 
     /* If a query parameter is provided, a $search stage is added to perform a full-text search on the "search_videos" index, searching only in the "title" and "description" fields. */
-    if (query) {
-        pipeline.push({
-            $search: {
-                index: "search_videos",
-                text: {
-                    query: query,
-                    path: ["title", "description"], //search only on title, desc
-                },
-            },
-        });
-    }
+    // if (query) {
+    //     pipeline.push({
+    //         $search: {
+    //             index: "search-videos",
+    //             text: {
+    //                 query: query,
+    //                 path: ["title", "description"] //search only on title, desc
+    //             }
+    //         }
+    //     });
+    // }
 
     if (userId) {
         if (!isValidObjectId(userId)) {
@@ -177,7 +177,7 @@ const getVideoById = asyncHandler(async (req, res) => {
             $lookup: {
                 from: "likes",
                 localField: "_id",
-                foreignField: "vdieo",
+                foreignField: "video",
                 as: "likes",
             },
         },
@@ -199,7 +199,7 @@ const getVideoById = asyncHandler(async (req, res) => {
                     {
                         $addFields: {
                             subscribersCount: {
-                                $size: "subscribers",
+                                $size: "$subscribers"
                             },
                             isSubscribed: {
                                 $cond: {
@@ -228,7 +228,7 @@ const getVideoById = asyncHandler(async (req, res) => {
         },
         {
             $addFields: {
-                likedCount: {
+                likesCount: {
                     $size: "$likes",
                 },
                 owner: {

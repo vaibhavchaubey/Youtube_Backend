@@ -61,12 +61,12 @@ const toggleCommentLike = asyncHandler(async (req, res) => {
 
 const toggleTweetLike = asyncHandler(async (req, res) => {
     const { tweetId } = req.params;
-    if (!isValidObjectId(commentId)) {
+    if (!isValidObjectId(tweetId)) {
         throw new ApiError(400, "Invalid tweetId");
     }
 
     const likedAlready = await Like.findOne({
-        comment: tweetId,
+        tweet: tweetId,
         likedBy: req.user?._id,
     });
 
@@ -125,7 +125,7 @@ const getLikedVideos = asyncHandler(async (req, res) => {
         {
             $project: {
                 _id: 0,
-                linkedVideo: {
+                likedVideo: {
                     _id: 1,
                     "videoFile.url": 1,
                     "thumbnail.url": 1,
@@ -145,6 +145,7 @@ const getLikedVideos = asyncHandler(async (req, res) => {
             },
         },
     ]);
+    
     res.status(200).json(
         new ApiResponse(200,
             likedVideosAggegate,
