@@ -75,7 +75,7 @@ const getUserPlaylists = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(
                 200,
-                playlists[0],
+                playlists,
                 "User playlists fetched successfully"
             )
         );
@@ -266,7 +266,7 @@ const removeVideoFromPlaylist = asyncHandler(async (req, res) => {
         .json(
             new ApiResponse(
                 200,
-                updatePlaylist,
+                updatedPlaylist,
                 "Removed video from playlist successfully"
             )
         );
